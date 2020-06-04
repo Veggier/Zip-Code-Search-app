@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import './App.css';
 import Zipcode from "./components/Zipcode";
-import axios from "axios";
+
 
 
 class App extends Component{
