@@ -7,9 +7,8 @@ import Zipcode from "./components/Zipcode";
 class App extends Component{
   render(){
   return (
-    <div className="App">
-      <h1>reactjs with APIs</h1>
-     <Zipcode code="10016"/>
+    <div className="">
+     <Zipcode />
     </div>
   );
   }
