@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Zip-Code-Search-app/static/css/main.2f282f52.chunk.css",
+    "main.js": "/Zip-Code-Search-app/static/js/main.15daf1ba.chunk.js",
+    "main.js.map": "/Zip-Code-Search-app/static/js/main.15daf1ba.chunk.js.map",
+    "runtime-main.js": "/Zip-Code-Search-app/static/js/runtime-main.ea46784e.js",
+    "runtime-main.js.map": "/Zip-Code-Search-app/static/js/runtime-main.ea46784e.js.map",
+    "static/js/2.94dcb556.chunk.js": "/Zip-Code-Search-app/static/js/2.94dcb556.chunk.js",
+    "static/js/2.94dcb556.chunk.js.map": "/Zip-Code-Search-app/static/js/2.94dcb556.chunk.js.map",
+    "index.html": "/Zip-Code-Search-app/index.html",
+    "precache-manifest.2819d164bf2e0a4d688b636fb990367c.js": "/Zip-Code-Search-app/precache-manifest.2819d164bf2e0a4d688b636fb990367c.js",
+    "service-worker.js": "/Zip-Code-Search-app/service-worker.js",
+    "static/css/main.2f282f52.chunk.css.map": "/Zip-Code-Search-app/static/css/main.2f282f52.chunk.css.map",
+    "static/js/2.94dcb556.chunk.js.LICENSE.txt": "/Zip-Code-Search-app/static/js/2.94dcb556.chunk.js.LICENSE.txt",
+    "static/media/index.css": "/Zip-Code-Search-app/static/media/Background-Images-2.f1fcd246.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ea46784e.js",
+    "static/js/2.94dcb556.chunk.js",
+    "static/css/main.2f282f52.chunk.css",
+    "static/js/main.15daf1ba.chunk.js"
+  ]
+}
