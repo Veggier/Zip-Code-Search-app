@@ -10,49 +10,44 @@ class Zipcode extends Component{
     }
     handleSubmit=(event)=>{
         event.preventDefault();
-        this.setState({
-            code:event.target.zipcode.value,
+        axios.get("http://ctp-zip-api.herokuapp.com/zip/"+this.state.code)
+        .then((response)=>{
+          const data=response.data;
+          let newczipObj=[]
+          for(let i=0;i<data.length;i++)
+          {
+              newczipObj[i]={
+                  locationText:data[i].LocationText,
+                  statename:data[i].State,
+                  lat:data[i].Lat,
+                  long:data[i].Long,
+                  population:data[i].EstimatedPopulation,
+                  totalWages: data[i].TotalWages,
+              };
+          }
+          this.setState({
+              zip:newczipObj,
+          });
         })
-        this.componentDidMount()
-    }
-    componentDidMount(){
-        if(this.state.code.length>4)
-    {
-      axios.get("http://ctp-zip-api.herokuapp.com/zip/"+this.state.code)
-      .then((response)=>{
-        const data=response.data;
-        let newczipObj=[]
-        for(let i=0;i<data.length;i++)
-        {
-            newczipObj[i]={
-                locationText:data[i].LocationText,
-                statename:data[i].State,
-                lat:data[i].Lat,
-                long:data[i].Long,
-                population:data[i].EstimatedPopulation,
-                totalWages: data[i].TotalWages,
-            };
-        }
-        this.setState({
-            zip:newczipObj,
-        });
-      })
-      .catch((err)=>console.log(err));
-    }
+        .catch((err)=>alert("this Zipcode is not exist"));
     }
     render(){
-        //console.log("state",this.state)
         let display;
         if(!this.state.zip.length){
             display=(
-                <div className="center">
-                <form onSubmit={this.handleSubmit}>
-                <div>Zip code:
-                    <input type="text" name="zipcode"
+                <div >
+                    <h2 className="center">Zipcode Search</h2>
+                    <br/>
+                <form className="card  border-light mb-3 width mx-auto" onSubmit={this.handleSubmit}>
+                <div className="input-group mx-auto">
+                <span className="input-group-text">Zip code:</span>
+                    <input type="text" name="zipcode"  placeholder="Try 10017"
                     onChange={e=>this.setState({code:e.target.value})}
                     value={this.state.code}
                     />
-                     <button type="submit">check</button>
+                    <div className="input-group-append">
+                     <button className="btn btn-info " type="submit">Search</button>
+                     </div>
                 </div>
                 <div>No Result</div>
                 </form>
@@ -62,38 +57,39 @@ class Zipcode extends Component{
             
             display=(
                 <div >
-                <form className="center" onSubmit={this.handleSubmit}>
-                <div>Zip code:
-                    <input type="text" name="zipcode"
+                    <h2 className="center">Zipcode Search</h2>
+                    <br/>
+                <form className="card  border-light mb-3 width mx-auto" onSubmit={this.handleSubmit}>
+                <div className="input-group mx-auto">
+                <span className="input-group-text">Zip code:</span>
+                    <input type="text" name="zipcode"  placeholder="Try 10017"
                     onChange={e=>this.setState({code:e.target.value})}
                     value={this.state.code}
                     />
-                     <button type="submit">check</button>
+                    <div className="input-group-append">
+                     <button className="btn btn-info " type="submit">Search</button>
+                     </div>
                 </div>
-                <br/>
                 </form>
+                <div className="row row-cols-3">
                     {this.state.zip.map((item,i) => {
                      return (
-                    //     <div className="card bg-light mb-3 width"  key={i}>
-                    //     <div className="card-header">{item.locationText}</div>
-                    //     <div className="card-body">
-                    //       <h5 className="card-title">{item.statename}</h5>
-                    //       <p >Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    //     </div>
-                    //   </div>
-                    <div className="card bg-light mb-3 width mx-auto "  key={i}> 
-                    <h2>{item.locationText}</h2>
-                    <ul>
-                
-                    <li>State: {item.statename}</li>
-                    <li>Location: ({item.lat},{item.long})</li>
-                    <li>Population(estimated): {item.population}</li>
-                     <li>Total Wages: {item.totalWages}</li>
-                    
-                    </ul>
-                </div>
+                        <div className="col" key={i}>
+                        <div className="card bg-light mb-3 width mx-auto"  key={i}>
+                        <div className="card-header">{item.locationText}</div>
+                        <div className="card-body">
+                        <h5 className="card-title">State:{item.statename}</h5>
+                        <ul> 
+                            <li>Location: ({item.lat},{item.long})</li>
+                            <li>Population(estimated): {item.population}</li>
+                            <li>Total Wages: {item.totalWages}</li>
+                        </ul>
+                        </div>
+                      </div>
+                      </div>
                 );
                 })}
+                </div>
                 </div>
             )
         }

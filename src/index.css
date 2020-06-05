@@ -1,4 +1,7 @@
 body {
+  background-image: url(./components/Background-Images-2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -12,7 +15,7 @@ code {
     monospace;
 }
 .width{
-  max-width: 20rem;
+  max-width: 22rem;
 }
 .center{
   text-align: center;
